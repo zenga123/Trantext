@@ -379,7 +379,7 @@ struct ContentView: View {
         showingSubtitles = false
         
         // 백엔드 서버에 요청 보내기
-        let serverURL = "http://192.168.0.245:5001/transcribe"
+        let serverURL = "http://127.0.0.1:5001/transcribe"
         let parameters: [String: Any] = ["youtube_url": youtubeURL]
         
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {
@@ -458,7 +458,7 @@ struct ContentView: View {
     
     // 서버 연결 확인
     private func checkServerConnection() async throws {
-        guard let url = URL(string: "http://192.168.0.245:5001/health") else {
+        guard let url = URL(string: "http://127.0.0.1:5001/health") else {
             print("Error: Invalid health check URL")
             throw NSError(domain: "ConnectionError", code: 400, userInfo: [NSLocalizedDescriptionKey: "잘못된 서버 URL"])
         }
@@ -510,7 +510,7 @@ struct ContentView: View {
         print("Whisper API 호출 시작: \(youtubeURL)")
         
         // API 요청 URL 구성
-        guard let url = URL(string: "http://192.168.0.245:5001/transcribe") else {
+        guard let url = URL(string: "http://127.0.0.1:5001/transcribe") else {
             let error = NSError(domain: "TranscriptError", code: 400, userInfo: [NSLocalizedDescriptionKey: "잘못된 API URL"])
             print("잘못된 API URL")
             throw error
@@ -1132,7 +1132,7 @@ struct TranslationResult {
 extension TranslationService {
     func translate(_ request: TranslationRequest) async throws -> TranslationResult {
         // 서버 API URL
-        guard let url = URL(string: "http://192.168.0.245:5001/translate") else {
+        guard let url = URL(string: "http://127.0.0.1:5001/translate") else {
             throw NSError(domain: "TranslationError", code: 400, userInfo: [NSLocalizedDescriptionKey: "잘못된 번역 API URL"])
         }
         
