@@ -1,0 +1,10 @@
+# Xcode 빌드 관련 파일
+build/
+DerivedData/
+
+# Xcode 사용자 데이터 (개인 설정이나 상태 파일)
+*.xcuserstate
+**/xcuserdata/
+
+# 시스템 파일
+.DS_Store
